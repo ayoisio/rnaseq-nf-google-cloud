@@ -1,4 +1,4 @@
-# RNA-Seq and Protein Structure Prediction on GCP
+# End-to-end RNA-Seq and Protein Folding on GCP
 
 ![Successful pipeline execution graph](/images/workflow.png)
 
