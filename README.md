@@ -1,4 +1,4 @@
-# RNA-Seq and Protein Folding on GCP
+# RNA-Seq and Protein Folding on Google Cloud
 
 ![Successful pipeline execution graph](/images/workflow.png)
 
