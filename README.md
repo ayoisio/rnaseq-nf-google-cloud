@@ -1,4 +1,4 @@
-# RNA-Seq and Protein Structure Prediction on Google Cloud
+# RNA-Seq and Protein Structure Prediction on GCP
 
 ![Successful pipeline execution graph](/images/workflow.png)
 
