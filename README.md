@@ -1,8 +1,15 @@
-# RNASeq Nextflow Demo on Google Cloud
+# RNA-Seq and Protein Structure Prediction on Google Cloud
 
-A proof-of-concept paired-end RNA-Seq pipeline managed by [Nextflow](https://nextflow.io/) using the Google Cloud [Life Sciences API](https://cloud.google.com/life-sciences/docs/reference/rest). 
+![Successful pipeline execution graph](/images/workflow.png)
 
-The steps of the pipeline are:
+## Summary
+We have developed an end-to-end pipeline for RNA-Seq and protein structure prediction that utilizes BigQuery and Vertex AI to efficiently handle and process terabyte-scale data. We hope to provide insights into how Google Cloud can be used to tackle computational challenges in modern biology and medicine, ultimately paving the way for new discoveries and innovations.
+
+## Data
+FASTQ files are sourced from a public NCBI dataset [GSE181830](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE181830).
+
+### Workflow 
+The steps of the RNA-Seq pipeline are:
 1. Adapter and quality trimming with [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
 2. Quality control readout with [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 3. Estimation of gene and isoform expression with [RSEM](https://github.com/deweylab/RSEM)
