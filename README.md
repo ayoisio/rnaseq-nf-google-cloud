@@ -8,7 +8,7 @@ We have developed an end-to-end pipeline for RNA-Seq and protein structure predi
 ## Data
 FASTQ files are sourced from a public NCBI dataset [GSE181830](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE181830).
 
-### Workflow 
+## Workflow 
 The steps of the RNA-Seq pipeline are:
 1. Adapter and quality trimming with [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
 2. Quality control readout with [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
