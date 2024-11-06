@@ -4,16 +4,33 @@ import pandas as pd
 import pytz
 from decimal import Decimal
 from google.cloud import bigquery
+from google.cloud.bigquery import LoadJob
+from typing import Optional
 
 
-def load_gene_results(results_path, table_id, sample_id, verbose=False):
+def load_gene_results(
+    results_path: str,
+    table_id: str,
+    sample_id: str,
+    verbose: bool = False
+) -> LoadJob:
     """
-    Load gene results into BQ
-    Inputs:
-        results_path (str)
-        table_id (str)
-        sample_id (str)
-        verbose (bool)
+    Load gene-level expression results into BigQuery table.
+
+    Args:
+        results_path: Path to the tab-separated gene results file containing columns:
+            gene_id, transcript_id(s), length, effective_length, expected_count, TPM, FPKM
+        table_id: Fully-qualified BigQuery table ID in format 'project.dataset.table'
+        sample_id: Unique identifier for the sample being loaded
+        verbose: If True, prints additional debugging information during execution
+
+    Returns:
+        LoadJob: Completed BigQuery load job containing operation results
+
+    Raises:
+        google.api_core.exceptions.GoogleAPIError: If the BigQuery load operation fails
+        pandas.errors.EmptyDataError: If the results file is empty
+        FileNotFoundError: If the results file does not exist
     """
     if verbose is True:
         print("results_path:", results_path)
@@ -60,14 +77,29 @@ def load_gene_results(results_path, table_id, sample_id, verbose=False):
         print('Error occurred while loading job "{}":\n{}\nCurrent status is {}.'.format(result.job_id, result.error_result, result.state))
 
 
-def load_isoform_results(results_path, table_id, sample_id, verbose=False):
+def load_isoform_results(
+    results_path: str,
+    table_id: str, 
+    sample_id: str,
+    verbose: bool = False
+) -> LoadJob:
     """
-    Load isoform results into BQ
-    Inputs:
-        results_path (str)
-        table_id (str)
-        sample_id (str)
-        verbose (bool)
+    Load transcript/isoform-level expression results into BigQuery table.
+
+    Args:
+        results_path: Path to the tab-separated isoform results file containing columns:
+            transcript_id, gene_id, length, effective_length, expected_count, TPM, FPKM, IsoPct
+        table_id: Fully-qualified BigQuery table ID in format 'project.dataset.table'
+        sample_id: Unique identifier for the sample being loaded
+        verbose: If True, prints additional debugging information during execution
+
+    Returns:
+        LoadJob: Completed BigQuery load job containing operation results
+
+    Raises:
+        google.api_core.exceptions.GoogleAPIError: If the BigQuery load operation fails
+        pandas.errors.EmptyDataError: If the results file is empty
+        FileNotFoundError: If the results file does not exist
     """
     if verbose is True:
         print("results_path:", results_path)
